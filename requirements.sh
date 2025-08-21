@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REQUIREMENTS=(tmux fzf ripgrep git curl)
+REQUIREMENTS=(tmux fzf ripgrep curl build-essential unzip stow)
 
 install_debian() {
     sudo apt update
