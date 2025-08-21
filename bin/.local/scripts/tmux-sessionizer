@@ -341,4 +341,4 @@ if ! has_session "$selected_name"; then
     hydrate "$selected_name" "$selected"
 fi
 
-switch_to "$selected_name"i
+switch_to "$selected_name"

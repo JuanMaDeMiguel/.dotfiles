@@ -115,13 +115,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-. "/home/juanm/.deno/env"
 export PATH="/usr/local/bin:$PATH"
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-alias vim="nvim"
-
-. "$HOME/.cargo/env"
 
 PATH="$PATH":"$HOME/.local/scripts/"
 bind '"\C-f":"tmux-sessionizer\n"'
