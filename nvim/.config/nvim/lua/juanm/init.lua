@@ -29,6 +29,17 @@ vim.filetype.add({
     }
 })
 
+-- Hard wrap automático en 100 columnas para Markdown
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.textwidth = 100     -- corta las líneas a las 100 col.
+    vim.opt_local.formatoptions:append("t") -- wrap automático al tipear
+    vim.opt_local.formatoptions:append("c") -- wrap comentarios
+    vim.opt_local.formatoptions:append("q") -- permite gq para reflow
+  end,
+})
+
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -73,6 +84,13 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "*.md",
+	callback = function()
+		vim.cmd("MarkdownPreview")
+	end,
 })
 
 vim.g.netrw_browse_split = 0
